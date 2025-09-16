@@ -192,7 +192,6 @@ This project is created by NaderB. Feel free to use and modify for personal use.
 
 **Created by NaderB**
 
-Visit https://www.naderb.org for more projects!
-
+Visit to download and more apps https://www.naderb.org
 
 
