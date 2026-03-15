@@ -2,7 +2,10 @@
 
 A clean, modern YouTube downloader with a beautiful GUI interface.
 
-**Created by NaderB - https://www.naderb.org**
+**Created by NaderB - https://www.naderb.org**  
+**Last updated: 2026-03-15**
+
+📦 **Download:** [Get the complete package (GUI + backend) at naderb.org/kartoshka.php](https://naderb.org/kartoshka.php)
 
 ## Features
 
@@ -12,7 +15,6 @@ A clean, modern YouTube downloader with a beautiful GUI interface.
 - **Format Support** - MP4, WebM, MKV, Audio-only
 - **Real-time Progress** - Live download progress with speed and ETA
 - **Video Information** - Preview title, duration, uploader, views
-- **Playlist Support** - Download entire playlists
 - **Customizable Settings** - Save your preferences
 - **Standalone Executables** - No Python installation required
 
@@ -27,8 +29,8 @@ This application uses a **two-part architecture** for maximum reliability:
 
 ### Option 1: Use Pre-built Executables (Recommended)
 
-1. Download the `release` folder
-2. Run `kartoshka-youtuber.exe`
+1. **Download the package:** [naderb.org/kartoshka.php](https://naderb.org/kartoshka.php) (includes GUI, backend, ffmpeg, and instructions)
+2. Extract the zip and run `kartoshka-youtuber.exe`
 3. Enter a YouTube URL and start downloading!
 
 ### Option 2: Build from Source
@@ -62,8 +64,6 @@ This application uses a **two-part architecture** for maximum reliability:
 
 - Single videos: `https://www.youtube.com/watch?v=VIDEO_ID`
 - Short URLs: `https://youtu.be/VIDEO_ID`
-- Playlists: `https://www.youtube.com/playlist?list=PLAYLIST_ID`
-- Channels: `https://www.youtube.com/channel/CHANNEL_ID`
 
 ## Quality Options
 
@@ -104,11 +104,22 @@ This application uses a **two-part architecture** for maximum reliability:
 
 ## Technical Details
 
-- **Backend**: Python with yt-dlp library
-- **Frontend**: C# WPF desktop app (`KartoshkaYoutuber.csproj`)
-- **Packaging**: PyInstaller for backend, .NET for GUI
-- **Communication**: JSON over subprocess calls
-- **Platform**: Windows (can be adapted for other platforms)
+- **Backend**: Python 3.x with yt-dlp (e.g. 2026.x)
+- **Frontend**: C# WPF desktop app — **.NET 8**, Windows-only, self-contained single-file exe
+- **GUI project**: `KartoshkaYoutuber.csproj` (WPF, `net8.0-windows`)
+- **Packaging**: PyInstaller for backend; `dotnet publish -r win-x64 --self-contained` for GUI
+- **Communication**: JSON over subprocess (GUI launches backend exe or `python backend.py`)
+- **Platform**: Windows (x64)
+
+### C# / GUI stack
+
+| Item        | Value                          |
+|------------|---------------------------------|
+| Framework  | .NET 8                          |
+| UI         | WPF (Windows Presentation Foundation) |
+| Target     | `net8.0-windows`                |
+| Publish    | Self-contained, single-file exe (no .NET install required on target PC) |
+| Build      | `dotnet publish -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true` |
 
 ## Libraries Used
 
@@ -183,18 +194,24 @@ This project is created by NaderB. Feel free to use and modify for personal use.
 
 ## Version History
 
+### 2026-03-15 (C# GUI)
+- GUI rewritten in **C# WPF** (.NET 8); Python Tkinter GUI removed
+- Self-contained `kartoshka-youtuber.exe` (no .NET required on user machines)
+- Backend remains Python/yt-dlp; yt-dlp pinned to 2026.x
+- Format combo and UI readability fixes
+
 ### v6.9
 - Complete rewrite with two-part architecture
 - Modern GUI with real-time progress
 - Standalone executables
 - Better error handling
-- Playlist support
 
 ---
 
 **Created by NaderB**
 
-Visit https://www.naderb.org for more projects!
+- **Download:** [Kartoshka YouTube Downloader (naderb.org/kartoshka.php)](https://naderb.org/kartoshka.php)  
+- **More projects:** https://www.naderb.org
 
 
 

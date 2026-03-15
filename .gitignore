@@ -32,4 +32,5 @@ release/download/
 
 # Built exes & ffmpeg bundles — too large for GitHub (>100MB for GUI); build locally or use Releases
 release/*.exe
+release/*.zip
 kartoshka-youtuber-v6.9.1/release/*.exe
