@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# C# / .NET
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+project.lock.json
+
+# PyInstaller
+build/
+dist/
+*.spec
+
+# IDE
+.vs/
+.idea/
+*.swp
+
+# OS
+.Desktop.ini
+Thumbs.db
+
+# User downloads / runtime output — do not commit
+release/download/
+
+# Built exes & ffmpeg bundles — too large for GitHub (>100MB for GUI); build locally or use Releases
+release/*.exe
+kartoshka-youtuber-v6.9.1/release/*.exe
