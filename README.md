@@ -1,17 +1,20 @@
 # 🔥 Kartoshka Youtuber v6.9
 
-A clean, modern YouTube downloader with a beautiful GUI interface.
+A clean, modern YouTube downloader with an easy to use GUI interface.
+
+![Screenshot](docs/app.png)
+
 
 **Created by NaderB - https://www.naderb.org**  
-**Last updated: 2026-03-15**
+**Last updated: 2026-04-29**
 
-📦 **Download:** [Get the complete package (GUI + backend) at naderb.org/kartoshka.php](https://naderb.org/kartoshka.php)
+📦 **Download:** [Get the complete package (GUI + backend) at naderb.org/kartoshka.php](https://naderb.org/kartoshka)
 
 ## Features
 
 - **Modern GUI Interface** - Clean, intuitive design
 - **Fast Downloads** - Optimized for speed and reliability  
-- **Multiple Qualities** - Best, 720p, 480p, 360p, and more
+- **Multiple Qualities** - Best,4k, 1080p 720p, 480p, 360p, and more
 - **Format Support** - MP4, WebM, MKV, Audio-only
 - **Real-time Progress** - Live download progress with speed and ETA
 - **Video Information** - Preview title, duration, uploader, views
@@ -29,7 +32,7 @@ This application uses a **two-part architecture** for maximum reliability:
 
 ### Option 1: Use Pre-built Executables (Recommended)
 
-1. **Download the package:** [naderb.org/kartoshka.php](https://naderb.org/kartoshka.php) (includes GUI, backend, ffmpeg, and instructions)
+1. **Download the package:** [naderb.org/kartoshka.php](https://naderb.org/kartoshka) (includes GUI, backend, ffmpeg, and instructions)
 2. Extract the zip and run `kartoshka-youtuber.exe`
 3. Enter a YouTube URL and start downloading!
 
@@ -66,12 +69,12 @@ This application uses a **two-part architecture** for maximum reliability:
 - Short URLs: `https://youtu.be/VIDEO_ID`
 
 ## Quality Options
-
-- **Best** - Highest available quality
-- **Worst** - Lowest available quality  
-- **720p** - HD quality (1280x720)
-- **480p** - Standard quality (854x480)
-- **360p** - Lower quality (640x360)
+- **Best** – Download the highest video quality available
+- **Worst** – Download the lowest available quality for smaller file size
+- **720p** – HD video quality (1280 × 720)
+- **480p** – Standard video quality (854 × 480)
+- **360p** – Lower quality for faster downloads and reduced file size (640 × 360)
+- **Full HD** – Supports 1080p and any higher quality available
 
 ## Format Options
 
@@ -158,26 +161,6 @@ This project was inspired by the need for a clean, user-friendly YouTube downloa
 
 **Note**: This application is for educational purposes. Please respect YouTube's Terms of Service and only download content you own or have permission to download.
 
-## File Structure
-
-```
-kartoshka-youtuber/
-├── backend.py               # Console backend application (Python)
-├── build.py                 # Build script for backend
-├── test_app.py              # Test script for backend
-├── requirements.txt         # Python dependencies for backend
-├── KartoshkaYoutuber.csproj # C# WPF GUI project
-├── App.xaml / App.xaml.cs   # WPF application entry
-├── MainWindow.xaml          # Main GUI layout
-├── MainWindow.xaml.cs       # GUI logic, talks to backend
-├── build.bat                # Windows build script
-├── icon.ico                 # Application icon
-└── release/                 # Built executables (after running build.py + dotnet publish, if desired)
-    ├── kartoshka-youtuber.exe
-    ├── kartoshka-backend.exe
-    └── README.txt
-```
-
 ## Development
 
 To modify or extend the application:
@@ -189,8 +172,28 @@ To modify or extend the application:
 5. **Build GUI** with `dotnet build` (or `dotnet publish`) in the project folder
 
 ## License
+MIT License
 
-This project is created by NaderB. Feel free to use and modify for personal use.
+Copyright (c) 2026 Nader Barakat
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
 
 ## Version History
 
@@ -210,7 +213,7 @@ This project is created by NaderB. Feel free to use and modify for personal use.
 
 **Created by NaderB**
 
-- **Download:** [Kartoshka YouTube Downloader (naderb.org/kartoshka.php)](https://naderb.org/kartoshka.php)  
+- **Download:** [Kartoshka YouTube Downloader (naderb.org/kartoshka.php)](https://naderb.org/kartoshka)  
 - **More projects:** https://www.naderb.org
 
 
