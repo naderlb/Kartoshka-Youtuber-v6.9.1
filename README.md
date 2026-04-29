@@ -2,7 +2,7 @@
 
 A clean, modern YouTube downloader with an easy to use GUI interface.
 
-![Screenshot](docs/app.png)
+![Screenshot](app.png)
 
 
 **Created by NaderB - https://www.naderb.org**  
