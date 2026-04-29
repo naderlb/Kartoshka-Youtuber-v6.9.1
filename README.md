@@ -8,7 +8,7 @@ A clean, modern YouTube downloader with an easy to use GUI interface.
 **Created by NaderB - https://www.naderb.org**  
 **Last updated: 2026-04-29**
 
-📦 **Download:** [Get the complete package (GUI + backend) at naderb.org/kartoshka.php](https://naderb.org/kartoshka)
+📦 **Download:** [Get the complete package (GUI + backend) at naderb.org/kartoshka](https://naderb.org/kartoshka)
 
 ## Features
 
@@ -32,7 +32,7 @@ This application uses a **two-part architecture** for maximum reliability:
 
 ### Option 1: Use Pre-built Executables (Recommended)
 
-1. **Download the package:** [naderb.org/kartoshka.php](https://naderb.org/kartoshka) (includes GUI, backend, ffmpeg, and instructions)
+1. **Download the package:** [naderb.org/kartoshka](https://naderb.org/kartoshka) (includes GUI, backend, ffmpeg, and instructions)
 2. Extract the zip and run `kartoshka-youtuber.exe`
 3. Enter a YouTube URL and start downloading!
 
@@ -213,7 +213,7 @@ SOFTWARE.
 
 **Created by NaderB**
 
-- **Download:** [Kartoshka YouTube Downloader (naderb.org/kartoshka.php)](https://naderb.org/kartoshka)  
+- **Download:** [Kartoshka YouTube Downloader (naderb.org/kartoshka)](https://naderb.org/kartoshka)  
 - **More projects:** https://www.naderb.org
 
 
