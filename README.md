@@ -1,4 +1,4 @@
-# 🔥 Kartoshka Youtuber v6.9
+# 🔥 Kartoshka Youtuber v6.9.2
 
 A clean, modern YouTube downloader with an easy to use GUI interface.
 
@@ -6,7 +6,7 @@ A clean, modern YouTube downloader with an easy to use GUI interface.
 
 
 **Created by NaderB - https://www.naderb.org**  
-**Last updated: 2026-04-29**
+**Last updated: 2026-08-07**
 
 📦 **Download:** [Get the complete package (GUI + backend) at naderb.org/kartoshka](https://naderb.org/kartoshka)
 
@@ -14,10 +14,14 @@ A clean, modern YouTube downloader with an easy to use GUI interface.
 
 - **Modern GUI Interface** - Clean, intuitive design
 - **Fast Downloads** - Optimized for speed and reliability  
-- **Multiple Qualities** - Best,4k, 1080p 720p, 480p, 360p, and more
-- **Format Support** - MP4, WebM, MKV, Audio-only
+- **Multiple Qualities** - Best, 4K, 1080p, 720p, 480p, 360p, and more
+- **Format Support** - MP4, WebM, MKV, MP3 / audio-only
 - **Real-time Progress** - Live download progress with speed and ETA
 - **Video Information** - Preview title, duration, uploader, views
+- **Playlist & Mix Support** - Load a full track list, remove songs you don't want, download the rest
+- **Smart Queue** - One song at a time with pause between items (avoids YouTube rate limits)
+- **MP3 Pipeline** - Converts the previous song while the next one downloads
+- **Auto-Retry** - Failed songs are retried automatically after the queue finishes
 - **Customizable Settings** - Save your preferences
 - **Standalone Executables** - No Python installation required
 
@@ -53,22 +57,44 @@ This application uses a **two-part architecture** for maximum reliability:
    ```
    Or simply run: `build.bat`
 
+   Tip: run `python build.py --clean` to remove temporary `build/` and `dist/` folders after a successful build.
+
 ## How to Use
+
+### Single video
 
 1. **Launch the application** by running `kartoshka-youtuber.exe`
 2. **Enter a YouTube URL** in the URL field
-3. **Click "Get Info"** to preview video details
-4. **Select quality and format** from the dropdowns
-5. **Choose download location** (defaults to Downloads folder)
-6. **Click "Download"** to start downloading
-7. **Monitor progress** in real-time with speed and ETA
+3. Leave **Download mode** on **One video** (default)
+4. **Click "Get Info"** to preview video details
+5. **Select quality and format** from the dropdowns
+6. **Choose download location** (defaults to Downloads folder)
+7. **Click "Download"** to start downloading
+8. **Monitor progress** in real-time with speed and ETA
+
+### Playlist / Mix
+
+1. Paste a playlist or Mix URL (see **Supported URLs** below)
+2. Select **Playlist / Mix** under **Download mode**
+3. **Click "Get Info"** — the full track list appears on the left
+4. **Uncheck or Remove** any songs you do not want (use **Restore all** to bring them back)
+5. **Select quality and format** (MP3 is recommended for music)
+6. **Click "Download Selected"** — songs download **one at a time** with an **8 second pause** between each
+7. For MP3: the app **converts the previous song while the next one downloads**
+8. When the queue finishes, **failed songs are retried automatically** (up to 2 extra passes)
 
 ## Supported URLs
 
 - Single videos: `https://www.youtube.com/watch?v=VIDEO_ID`
 - Short URLs: `https://youtu.be/VIDEO_ID`
+- Playlists: `https://www.youtube.com/playlist?list=PLAYLIST_ID`
+- Watch URLs with a playlist / Mix: `https://www.youtube.com/watch?v=VIDEO_ID&list=LIST_ID`
+  - **Mix / radio** URLs use list IDs starting with `RD` (e.g. `list=RD…`)
+  - Mixes are limited to the **first 50 songs** by default
+  - Use **One video** mode to download only the current video from a `watch?v=…&list=…` URL
 
 ## Quality Options
+
 - **Best** – Download the highest video quality available
 - **Worst** – Download the lowest available quality for smaller file size
 - **720p** – HD video quality (1280 × 720)
@@ -81,27 +107,42 @@ This application uses a **two-part architecture** for maximum reliability:
 - **MP4** - Most compatible video format
 - **WebM** - Modern web format
 - **MKV** - High-quality container
-- **Audio** - Audio-only download
+- **MP3 / Audio** - Audio-only download with fast FFmpeg conversion
 
 ## Troubleshooting
 
 ### "Backend application not found"
+
 - Make sure both `kartoshka-youtuber.exe` and `kartoshka-backend.exe` are in the same folder
 - Try running `kartoshka-backend.exe` directly to test
 
 ### "Download failed" or "Get Info" errors / YouTube "unavailable"
+
 - **Update yt-dlp** — YouTube changes their API often; keep the library current:
   ```bash
   pip install -U yt-dlp
   ```
   Then rebuild with `python build.py` if you use the executables.
+- **Install [Deno](https://deno.com/)** — yt-dlp 2026.x works best with a JavaScript runtime for YouTube extraction
 - Check your internet connection
 - Verify the YouTube URL is valid
 - Try a different quality or format
 - Some videos may be region-restricted
 
+### Playlist / Mix: many songs fail with HTTP 403
+
+- YouTube rate-limits bulk downloads — the app already pauses **8 seconds** between songs and retries failures
+- Wait **15–30 minutes** and run again (failed songs are retried automatically)
+- For stubborn blocks, close Chrome/Edge and retry — the backend can use browser cookies as a last resort
+- Download fewer songs at a time by removing tracks from the list before starting
+
+### MP3 convert errors on songs with special characters in the title
+
+- v6.9.2 uses ASCII-safe filenames on Windows — rebuild if you still see `charmap` / encoding errors
+
 ### GUI not starting
-- Make sure you're on Windows 7 or later
+
+- Make sure you're on Windows 10 or later (recommended for .NET 8)
 - Try running as administrator
 - Check Windows Defender isn't blocking the application
 
@@ -129,6 +170,7 @@ This application uses a **two-part architecture** for maximum reliability:
 This project is built using the following open-source libraries and tools:
 
 ### Core Libraries
+
 - **[yt-dlp](https://github.com/yt-dlp/yt-dlp)** - The most powerful YouTube downloader library
 - **[PyInstaller](https://github.com/pyinstaller/pyinstaller)** - Converts Python applications into standalone executables
 - **[FFmpeg](https://ffmpeg.org/)** - Complete multimedia framework for audio/video processing
@@ -136,6 +178,7 @@ This project is built using the following open-source libraries and tools:
 - **[mutagen](https://github.com/quodlibet/mutagen)** - Python audio metadata library
 
 ### Built-in Libraries
+
 - **subprocess** (Python) - Process management and communication
 - **json** (Python) - Data serialization
 - **threading** (Python) - Asynchronous operations
@@ -147,16 +190,18 @@ This project is built using the following open-source libraries and tools:
 This project would not be possible without the incredible work of the open-source community:
 
 ### Primary Dependencies
+
 - **yt-dlp Team** - For creating the most reliable YouTube downloader. This project is a fork of youtube-dl with continuous improvements and bug fixes.
 - **PyInstaller Team** - For making it possible to distribute Python applications as standalone executables.
 - **FFmpeg Team** - For providing the industry-standard multimedia processing framework that handles all audio/video conversion.
 
 ### Special Thanks
+
 - **Python Software Foundation** - For the amazing Python programming language and its extensive standard library
-- **Tkinter/Tk** - For providing a robust GUI framework that works across platforms
 - **Open Source Community** - For the countless hours of development, testing, and documentation that make projects like this possible
 
 ### Inspiration
+
 This project was inspired by the need for a clean, user-friendly YouTube downloader that doesn't require technical knowledge to use. We believe in making technology accessible to everyone.
 
 **Note**: This application is for educational purposes. Please respect YouTube's Terms of Service and only download content you own or have permission to download.
@@ -168,10 +213,11 @@ To modify or extend the application:
 1. **Edit the backend** (`backend.py`) for download logic
 2. **Edit the GUI** (C# WPF: `MainWindow.xaml` / `MainWindow.xaml.cs`)
 3. **Test backend** with `python test_app.py`
-4. **Rebuild backend** with `python build.py`
-5. **Build GUI** with `dotnet build` (or `dotnet publish`) in the project folder
+4. **Rebuild** with `python build.py` (outputs to `release/`)
+5. **Build GUI only** with `dotnet build` (or `dotnet publish`) in the project folder
 
 ## License
+
 MIT License
 
 Copyright (c) 2026 Nader Barakat
@@ -194,16 +240,30 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
 ## Version History
 
+### v6.9.2 (2026-08-07)
+
+- **Playlist / Mix support** — load full track lists from playlist and `watch?v=…&list=…` URLs
+- **Download mode** — choose **One video** or **Playlist / Mix**
+- **Selectable queue** — check/uncheck songs, **Remove** unwanted tracks, **Restore all**
+- **Sequential downloads** — one song at a time with **8 s pause** between items
+- **MP3 pipeline** — convert song *N* while downloading song *N+1*
+- **Auto-retry** — failed songs retried up to **2 extra passes** after the queue finishes
+- **YouTube anti-block** — fallback player clients when CDN returns HTTP 403
+- **Windows fixes** — UTF-8 safe logging, ASCII-safe filenames for unicode titles
+- **Fast MP3** — multi-threaded FFmpeg conversion
+- Updated screenshot (`app.png`) and release docs
+
 ### 2026-03-15 (C# GUI)
+
 - GUI rewritten in **C# WPF** (.NET 8); Python Tkinter GUI removed
 - Self-contained `kartoshka-youtuber.exe` (no .NET required on user machines)
 - Backend remains Python/yt-dlp; yt-dlp pinned to 2026.x
 - Format combo and UI readability fixes
 
 ### v6.9
+
 - Complete rewrite with two-part architecture
 - Modern GUI with real-time progress
 - Standalone executables
@@ -214,7 +274,5 @@ SOFTWARE.
 **Created by NaderB**
 
 - **Download:** [Kartoshka YouTube Downloader (naderb.org/kartoshka)](https://naderb.org/kartoshka)  
+- **Repository:** [github.com/naderlb/Kartoshka-Youtuber-v6.9.1](https://github.com/naderlb/Kartoshka-Youtuber-v6.9.1)  
 - **More projects:** https://www.naderb.org
-
-
-

@@ -1,19 +1,15 @@
 @echo off
-title Building Kartoshka Youtuber v6.9
+title Building Kartoshka Youtuber v6.9.2
 color 0A
 echo.
 echo  ================================================
-echo  🔥 Building Kartoshka Youtuber v6.9
+echo  Building Kartoshka Youtuber v6.9.2
 echo  ================================================
 echo  Created by NaderB - https://www.naderb.org
-echo  A clean, modern YouTube downloader
 echo  ================================================
 echo.
-echo  Building Python application...
-echo.
 
-python build.py
-
+python build.py --clean
 if %ERRORLEVEL% EQU 0 (
     echo.
     echo  [SUCCESS] Build successful!
@@ -26,8 +22,4 @@ if %ERRORLEVEL% EQU 0 (
 )
 
 echo.
-echo  Press any key to exit...
-pause >nul
-
-
-
+pause

@@ -12,6 +12,7 @@ obj/
 *.suo
 *.userosscache
 project.lock.json
+*.pdb
 
 # PyInstaller
 build/
@@ -27,10 +28,21 @@ dist/
 .Desktop.ini
 Thumbs.db
 
+# Logs / local debug output
+log*.txt
+log*.text
+*.log
+
+# Backups (keep outside repo)
+*-backup-*.zip
+
 # User downloads / runtime output — do not commit
 release/download/
 
-# Built exes & ffmpeg bundles — too large for GitHub (>100MB for GUI); build locally or use Releases
+# Built binaries & bundled tools — build locally with build.py
 release/*.exe
 release/*.zip
-kartoshka-youtuber-v6.9.1/release/*.exe
+release/ffmpeg.exe
+release/ffprobe.exe
+release/backend.py
+release/icon.ico

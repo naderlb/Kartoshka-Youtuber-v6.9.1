@@ -3,3 +3,6 @@ yt-dlp>=2026.3.13
 pyinstaller>=6.0.0
 ffmpeg-python>=0.2.0
 mutagen>=1.47.0
+
+
+
